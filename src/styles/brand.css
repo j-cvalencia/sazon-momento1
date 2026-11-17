@@ -1,0 +1,32 @@
+:root {
+  /* Colores */
+  --color-primario: #c8452d;
+  --color-secundario: #f2a541;
+  --color-fondo: #fff8ee;
+  --color-texto: #2b1d14;
+  --color-blanco: #ffffff;
+
+  /* Tipografías */
+  --fuente-titulos: Georgia, serif;
+  --fuente-texto: 'Segoe UI', Arial, sans-serif;
+
+  /* Detalles */
+  --radio: 12px;
+  --sombra: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--fuente-texto);
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+}
+
+h1, h2, h3 {
+  font-family: var(--fuente-titulos);
+}
