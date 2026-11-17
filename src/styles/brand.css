@@ -1,18 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
 :root {
-  /* Colores */
-  --color-primario: #c8452d;
-  --color-secundario: #f2a541;
-  --color-fondo: #fff8ee;
-  --color-texto: #2b1d14;
-  --color-blanco: #ffffff;
+  --sazon-marfil: #f4f4e8;
+  --sazon-cacao: #643b22;
+  --sazon-verde-noche: #114622;
+  --sazon-verde-hondo: #215b33;
+  --sazon-verde-hoja: #3d8e33;
+  --sazon-hoja: #7fba00;
+  --sazon-verde-nutresa: #1b4332;
+  --sazon-verde-neon: #66d149;
+  --sazon-texto: #3f4040;
+  --sazon-texto2: #5b5e60;
+  --sazon-borde: #dad9c4;
+
+  /* Colores de marcas */
+  --marca-zenu: #d32f2f;
+  --marca-doria: #e65100;
+  --marca-pietran: #2e7d32;
+  --marca-noel: #c2185b;
 
   /* Tipografías */
-  --fuente-titulos: Georgia, serif;
-  --fuente-texto: 'Segoe UI', Arial, sans-serif;
+  --fuente-texto: 'Inter', sans-serif;
+  --fuente-titulos: 'Poppins', sans-serif;
+  --fuente-mono: 'IBM Plex Mono', monospace;
 
   /* Detalles */
-  --radio: 12px;
-  --sombra: 0 4px 12px rgba(0, 0, 0, 0.12);
+  --radio: 1rem;
+  --sombra: 0 1px 2px rgba(0, 0, 0, 0.08);
 }
 
 * {
@@ -23,10 +37,17 @@
 
 body {
   font-family: var(--fuente-texto);
-  background-color: var(--color-fondo);
-  color: var(--color-texto);
+  background-color: var(--sazon-marfil);
+  color: var(--sazon-texto);
 }
 
 h1, h2, h3 {
   font-family: var(--fuente-titulos);
+  color: var(--sazon-verde-nutresa);
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
