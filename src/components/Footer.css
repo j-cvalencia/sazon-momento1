@@ -1,7 +1,45 @@
 .footer {
   margin-top: 40px;
-  padding: 20px;
-  text-align: center;
-  background-color: var(--color-primario);
-  color: var(--color-blanco);
+  padding: 14px 32px;
+  background-color: var(--sazon-cacao);
+  color: rgba(255, 255, 255, 0.9);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.footer__contenido {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.footer__equipo {
+  font-family: var(--fuente-titulos);
+  font-weight: 700;
+  font-size: 12px;
+  color: #ffffff;
+}
+
+.footer__copy {
+  font-family: var(--fuente-mono);
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.footer__marcas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.footer__marca {
+  padding: 4px 12px;
+  border-radius: 999px;
+  background-color: #ffffff;
+  font-family: var(--fuente-titulos);
+  font-weight: 700;
+  font-size: 12px;
 }

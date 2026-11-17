@@ -1,10 +1,17 @@
 .card {
-  background-color: var(--color-blanco);
+  background-color: #ffffff;
+  border: 1px solid color-mix(in srgb, var(--sazon-verde-hoja) 35%, white);
   border-radius: var(--radio);
   box-shadow: var(--sombra);
   padding: 20px;
   text-align: center;
   width: 240px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
 }
 
 .card__emoji {
@@ -12,19 +19,23 @@
 }
 
 .card__titulo {
-  color: var(--color-primario);
+  color: var(--sazon-verde-nutresa);
   margin: 8px 0;
 }
 
 .card__texto {
   font-size: 14px;
+  color: var(--sazon-texto2);
   margin-bottom: 12px;
 }
 
 .card__precio {
   display: inline-block;
-  background-color: var(--color-secundario);
-  padding: 4px 12px;
-  border-radius: var(--radio);
-  font-weight: bold;
+  padding: 4px 14px;
+  border-radius: 999px;
+  background-color: var(--sazon-verde-hondo);
+  color: var(--sazon-marfil);
+  font-family: var(--fuente-titulos);
+  font-weight: 600;
+  font-size: 14px;
 }
