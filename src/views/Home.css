@@ -1,0 +1,19 @@
+.home {
+  padding: 32px 24px;
+  text-align: center;
+}
+
+.home__titulo {
+  color: var(--color-primario);
+}
+
+.home__subtitulo {
+  margin-bottom: 24px;
+}
+
+.home__lista {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 24px;
+}
