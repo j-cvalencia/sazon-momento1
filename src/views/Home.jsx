@@ -1,31 +1,97 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { mockApi } from '../services/mockApi'
 import ProductCard from '../components/ProductCard'
+import NutricionSemaforo from '../components/Nutricion/NutricionSemaforo'
 import './Home.css'
 
 function Home() {
-  // Datos estáticos guardados en un estado local
-  const [platos] = useState([
-    { id: 1, emoji: '🥘', nombre: 'Sancocho', descripcion: 'Caldo tradicional con carne y plátano.', precio: 22000 },
-    { id: 2, emoji: '🥟', nombre: 'Empanadas', descripcion: 'Crujientes, rellenas de carne y papa.', precio: 8000 },
-    { id: 3, emoji: '🍹', nombre: 'Jugo de lulo', descripcion: 'Fresco y natural, hecho al momento.', precio: 6000 },
-  ])
+  // Estados locales
+  const [recetas, setRecetas] = useState([])
+  const [idSeleccionado, setIdSeleccionado] = useState(1)
+  const [analisis, setAnalisis] = useState(null)
+  const [cargando, setCargando] = useState(true)
+  const [error, setError] = useState('')
+
+  // Carga la lista de recetas (botones) una sola vez
+  useEffect(() => {
+    mockApi
+      .listarRecetas()
+      .then(setRecetas)
+      .catch(() => setError('No pudimos cargar las recetas.'))
+  }, [])
+
+  // Carga el análisis cada vez que cambia la receta elegida
+  useEffect(() => {
+    let activo = true
+
+    mockApi
+      .obtenerAnalisis(idSeleccionado)
+      .then((datos) => {
+        if (activo) setAnalisis(datos)
+      })
+      .catch(() => {
+        if (activo) setError('No pudimos cargar el análisis de la receta.')
+      })
+      .finally(() => {
+        if (activo) setCargando(false)
+      })
+
+    return () => {
+      activo = false
+    }
+  }, [idSeleccionado])
+
+  const elegirReceta = (id) => {
+    setCargando(true)
+    setError('')
+    setIdSeleccionado(id)
+  }
 
   return (
     <main className="home">
-      <h1 className="home__titulo">Bienvenido a Sa·zón</h1>
-      <p className="home__subtitulo">Nuestros platos del día</p>
+      <h1 className="home__titulo">Análisis nutricional de recetas</h1>
+      <p className="home__subtitulo">Semáforo de aportes · Sa·zón</p>
 
-      <section className="home__lista">
-        {platos.map((plato) => (
-          <ProductCard
-            key={plato.id}
-            emoji={plato.emoji}
-            nombre={plato.nombre}
-            descripcion={plato.descripcion}
-            precio={plato.precio}
-          />
+      <nav className="home__selector" aria-label="Elegir receta">
+        {recetas.map((receta) => (
+          <button
+            key={receta.id}
+            type="button"
+            className={`home__boton ${receta.id === idSeleccionado ? 'home__boton--activo' : ''}`}
+            aria-pressed={receta.id === idSeleccionado}
+            onClick={() => elegirReceta(receta.id)}
+          >
+            {receta.emoji} {receta.nombre}
+          </button>
         ))}
-      </section>
+      </nav>
+
+      {error && (
+        <p className="home__mensaje" role="alert">
+          {error}
+        </p>
+      )}
+
+      {cargando && !error && (
+        <p className="home__mensaje" role="status">
+          Cargando análisis...
+        </p>
+      )}
+
+      {analisis && !cargando && !error && (
+        <section className="home__receta">
+          <ProductCard
+            emoji={analisis.emoji}
+            nombre={analisis.nombre}
+            descripcion={analisis.descripcion}
+            precio={analisis.precio}
+          />
+          <NutricionSemaforo
+            reglasNutricionales={analisis.reglasNutricionales}
+            totales={analisis.totales}
+          />
+        </section>
+      )}
     </main>
   )
 }
