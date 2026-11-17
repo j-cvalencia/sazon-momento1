@@ -1,0 +1,144 @@
+.nutricion-semaforo {
+  flex: 1;
+  min-width: 280px;
+  max-width: 640px;
+  padding: clamp(1.25rem, 1rem + 1vw, 1.5rem);
+  text-align: left;
+  color: var(--sazon-texto);
+  background: color-mix(in srgb, var(--sazon-verde-hoja) 6%, var(--sazon-marfil));
+  border: 1px solid var(--sazon-borde);
+  border-radius: 1rem;
+}
+
+.nutricion-semaforo__encabezado {
+  margin-bottom: 1.25rem;
+}
+
+.nutricion-semaforo__etiqueta {
+  margin-bottom: 0.25rem;
+  font-family: var(--fuente-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--sazon-verde-hondo);
+}
+
+.nutricion-semaforo__titulo {
+  font-size: clamp(1.25rem, 1rem + 1vw, 1.5rem);
+  color: var(--sazon-verde-nutresa);
+}
+
+.nutricion-semaforo__ayuda {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--sazon-texto2);
+}
+
+.nutricion-semaforo__lista {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 0.75rem;
+  list-style: none;
+}
+
+/* Tarjeta de cada nutriente */
+.nutricion-semaforo__indicador {
+  padding: 1rem;
+  background: var(--sazon-marfil);
+  color: var(--sazon-texto);
+  border: 1px solid var(--sazon-borde);
+  border-radius: 1rem;
+}
+
+/* Clases dinámicas: se aplican según el nivel */
+.nutricion-semaforo-alerta {
+  border-left: 5px solid var(--semaforo-alerta);
+  background: color-mix(in srgb, var(--semaforo-alerta) 8%, var(--sazon-marfil));
+}
+
+.nutricion-semaforo-ok {
+  border-left: 5px solid var(--semaforo-ok);
+  background: color-mix(in srgb, var(--semaforo-ok) 8%, var(--sazon-marfil));
+}
+
+.nutricion-semaforo__cabecera {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.nutricion-semaforo__nombre {
+  font-size: 1rem;
+}
+
+.nutricion-semaforo__estado {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.nutricion-semaforo-alerta .nutricion-semaforo__estado {
+  color: var(--semaforo-alerta-texto);
+}
+
+.nutricion-semaforo-ok .nutricion-semaforo__estado {
+  color: var(--semaforo-ok-texto);
+}
+
+.nutricion-semaforo__punto {
+  display: inline-block;
+  width: 0.7rem;
+  height: 0.7rem;
+  margin-right: 0.45rem;
+  border-radius: 9999px;
+}
+
+.nutricion-semaforo-alerta .nutricion-semaforo__punto {
+  background: var(--semaforo-alerta);
+}
+
+.nutricion-semaforo-ok .nutricion-semaforo__punto {
+  background: var(--semaforo-ok);
+}
+
+.nutricion-semaforo__valor {
+  margin-bottom: 0.25rem;
+  font-family: var(--fuente-mono);
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.nutricion-semaforo__unidad {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.nutricion-semaforo__umbrales {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--sazon-borde);
+  font-size: 0.75rem;
+}
+
+.nutricion-semaforo__umbrales .nutricion-semaforo__ayuda {
+  margin-top: 0;
+  font-size: 0.75rem;
+}
+
+.nutricion-semaforo__dato {
+  font-family: var(--fuente-mono);
+  font-weight: 700;
+}
+
+.nutricion-semaforo__aviso {
+  padding: 1rem;
+  border: 1px solid var(--sazon-borde);
+  border-radius: 0.75rem;
+}
